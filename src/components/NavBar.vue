@@ -11,13 +11,6 @@ const { y: scroll } = useWindowScroll()
 
 <template>
   <header class="header z-40">
-    <RouterLink
-      class="w-12 h-12 absolute xl:fixed m-5 select-none outline-none"
-      to="/"
-      focusable="false"
-    >
-      <Logo />
-    </RouterLink>
     <button
       title="Scroll to top"
       fixed right-3 bottom-3 w-10 h-10 hover:op100 rounded-full
@@ -30,6 +23,10 @@ const { y: scroll } = useWindowScroll()
     <nav class="nav">
       <div class="spacer" />
       <div class="right" print:op0>
+        <RouterLink to="/" title="Home">
+          <span class="lt-md:hidden">Home</span>
+          <div i-ri-home-line class="md:hidden" />
+        </RouterLink>
         <RouterLink to="/posts" title="Blog">
           <span class="lt-md:hidden">Blog</span>
           <div i-ri-article-line md:hidden />
