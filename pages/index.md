@@ -4,13 +4,13 @@ description: Anil Talasli's Portfolio
 art: random
 ---
 
-Hey, I'm Anıl Talaslı <span op50>(Anil Talasli)</span>.
+Hey, I'm Anil — I build apps that are secure, scalable, and built to last.
 
-Full-stack developer with 7 years of engineering background — currently finishing an MSc in Computer Engineering. I work with Java, Spring Boot, TypeScript, and cloud-native architectures.
+Whether you need a web app your customers can rely on, a backend that handles growth without breaking, or a database that stays fast under pressure — I've got you covered. I take projects from idea to deployment and make sure they keep running smoothly.
 
-I'm available for backend and full-stack projects, particularly in areas involving distributed systems, security, and DevOps. Check out my [projects](/projects) or read more [about me](/about).
+On the technical side: full-stack developer specialising in Java, Spring Boot, and cloud-native architectures (AWS, Docker, Kubernetes). I design REST and gRPC APIs, implement authentication and access control, and build data pipelines with Kafka, Spark, and Elasticsearch. Currently finishing an MSc in Computer Engineering.
 
-I write [blog posts](/posts) about what I'm building and learning.
+Check out my [projects](/projects) or read more [about me](/about). I also write [blog posts](/posts) about what I'm building and learning.
 
 <div flex-auto />
 
