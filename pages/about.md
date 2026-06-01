@@ -1,23 +1,23 @@
 ---
-title: About - Ecren Talasli
+title: About - Anil Talasli
 display: About
-description: About Ecren Talasli
+description: About Anil Talasli
 ---
 
 ## About Me
 
-I'm Anıl Talaslı (Ecren Talasli) — a full-stack developer transitioning from 7 years of engineering in the oil & gas industry. I'm currently completing an MSc in Computer Engineering at IU International University of Applied Sciences and looking for opportunities in backend and full-stack development, with particular interest in the defence industry and national technology initiatives.
+I'm Anıl Talaslı (Anil Talasli) — a full-stack developer transitioning from 7 years of engineering in the oil & gas industry. I'm currently completing an MSc in Computer Engineering at IU International University of Applied Sciences and looking for opportunities in backend and full-stack development, with particular interest in the defence industry and national technology initiatives.
 
 My engineering background gives me a systematic, problem-solving approach to software: I'm comfortable working under constraints, optimizing for performance, and building things that need to be reliable.
 
 ## Education
 
 **IU International University of Applied Sciences** — Germany<br>
-MSc Computer Engineering, GPA 3.30/4.00 *(2026)*<br>
+MSc Computer Engineering, GPA 3.30/4.00 _(2026)_<br>
 <span op75>Elective Courses: Data Engineering, Advanced Cyber Security and Cryptology</span>
 
 **Middle East Technical University** — Türkiye<br>
-BSc Petroleum and Natural Gas Engineering *(2019)*
+BSc Petroleum and Natural Gas Engineering _(2019)_
 
 ## Experience
 

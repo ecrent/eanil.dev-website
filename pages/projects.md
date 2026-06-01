@@ -1,5 +1,5 @@
 ---
-title: Projects - Ecren Talasli
+title: Projects - Anil Talasli
 display: Projects
 description: Projects I have built
 wrapperClass: 'text-center'

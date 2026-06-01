@@ -8,7 +8,7 @@ import MarkdownIt from 'markdown-it'
 
 const DOMAIN = 'https://eanil.dev'
 const AUTHOR = {
-  name: 'Ecren Talasli',
+  name: 'Anil Talasli',
   email: 'ecren.talasli@gmail.com',
   link: DOMAIN,
 }
@@ -26,11 +26,11 @@ async function buildBlogRSS() {
   const files = await fg('pages/posts/*.md')
 
   const options = {
-    title: 'Ecren Talasli',
-    description: 'Ecren Talasli\'s Blog',
+    title: 'Anil Talasli',
+    description: 'Anil Talasli\'s Blog',
     id: 'https://eanil.dev/',
     link: 'https://eanil.dev/',
-    copyright: 'CC BY-NC-SA 4.0 2024 © Ecren Talasli',
+    copyright: 'CC BY-NC-SA 4.0 2024 © Anil Talasli',
     feedLinks: {
       json: 'https://eanil.dev/feed.json',
       atom: 'https://eanil.dev/feed.atom',
@@ -71,8 +71,8 @@ async function buildBlogRSS() {
 
 async function writeFeed(name: string, options: FeedOptions, items: Item[]) {
   options.author = AUTHOR
-  options.image = 'https://antfu.me/avatar.png'
-  options.favicon = 'https://antfu.me/logo.png'
+  options.image = 'https://eanil.dev/favicon.png'
+  options.favicon = 'https://eanil.dev/favicon.png'
 
   const feed = new Feed(options)
 

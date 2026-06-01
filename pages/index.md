@@ -1,10 +1,10 @@
 ---
-title: Ecren Talasli
-description: Ecren Talasli's Portfolio
+title: Anil Talasli
+description: Anil Talasli's Portfolio
 art: random
 ---
 
-Hey, I'm Anıl Talaslı <span op50>(Ecren Talasli)</span>.
+Hey, I'm Anıl Talaslı <span op50>(Anil Talasli)</span>.
 
 Full-stack developer with 7 years of engineering background — currently finishing an MSc in Computer Engineering. I work with Java, Spring Boot, TypeScript, and cloud-native architectures.
 
