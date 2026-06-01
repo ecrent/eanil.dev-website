@@ -1,7 +1,6 @@
 ---
 title: Anil Talasli
 description: Anil Talasli's Portfolio
-art: random
 ---
 
 Hey, I'm Anil — I build apps that are secure, scalable, and built to last.
