@@ -4,11 +4,13 @@ description: Ecren Talasli's Portfolio
 art: random
 ---
 
-Hey! I'm Anıl Talaslı <span op50>(Ecren Talasli)</span>.
+Hey, I'm Anıl Talaslı <span op50>(Ecren Talasli)</span>.
 
-I build things and write about them. You can find my [projects here](/projects) and read more [about me here](/about).
+Full-stack developer with 7 years of engineering background — currently finishing an MSc in Computer Engineering. I work with Java, Spring Boot, TypeScript, and cloud-native architectures.
 
-I occasionally write [blog posts](/posts) about what I'm building and learning.
+I'm available for backend and full-stack projects, particularly in areas involving distributed systems, security, and DevOps. Check out my [projects](/projects) or read more [about me](/about).
+
+I write [blog posts](/posts) about what I'm building and learning.
 
 <div flex-auto />
 
