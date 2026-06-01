@@ -2,6 +2,7 @@
 title: About - Anil Talasli
 display: About
 description: About Anil Talasli
+art: random
 ---
 
 ## About Me
