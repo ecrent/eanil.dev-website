@@ -1,51 +1,124 @@
-name: Build & Deploy Website
+
+
+name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-    steps:
-      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: '**/package-lock.json'
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
+      - name: Build all completed apps
+        run: |
+          mkdir -p gh-pages/apps
 
-      - name: Install dependencies
-        run: npm ci
+          # Copy root index
+          cp .github/pages-index.html gh-pages/index.html 2>/dev/null || true
 
-      - name: Build
-        run: npm run build
+          # Build each app that has a package.json
+          for app_dir in apps/*/; do
+            folder=$(basename "$app_dir")
+            if [ -f "$app_dir/package.json" ]; then
+              echo "Building $folder..."
+              cd "$app_dir"
+              npm ci --prefer-offline 2>/dev/null || npm install
+              npm run build
+              mkdir -p "../../gh-pages/apps/$folder"
+              cp -r dist/. "../../gh-pages/apps/$folder/"
+              cd ../..
+            fi
+          done
 
-      - name: Deploy to VPS
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          script: mkdir -p /opt/eanil/website
+      - name: Generate pages index
+        run: |
+          python3 - <<'EOF'
+          import json, os
 
-      - name: Sync files
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          source: dist/
-          target: /opt/eanil/website/
-          strip_components: 1
-          rm: true
+          with open('app-tracker.json') as f:
+              d = json.load(f)
 
-      - name: Reload Nginx
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          script: docker exec compose-nginx-1 nginx -s reload
+          apps = [a for a in d['apps'] if a['status'] == 'completed']
+
+          rows = ''
+          for a in apps:
+              rows += f'''
+              <div class="app-card">
+                <div class="tier">Tier {a["tier"]}</div>
+                <h3>{a["name"]}</h3>
+                <p>{a["description"]}</p>
+                <a href="apps/{a["folder"]}/" class="demo-link">Live Demo</a>
+                <a href="https://github.com/ecrent/app-ideas-showcase/tree/main/apps/{a["folder"]}" class="code-link">Source</a>
+              </div>'''
+
+          html = f'''<!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width,initial-scale=1"/>
+            <title>App Ideas Showcase</title>
+            <style>
+              *{{box-sizing:border-box;margin:0;padding:0}}
+              body{{font-family:system-ui,sans-serif;background:#f8fafc;color:#1e293b;padding:2rem}}
+              h1{{font-size:2rem;font-weight:700;margin-bottom:.5rem}}
+              .subtitle{{color:#64748b;margin-bottom:2rem}}
+              .grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}}
+              .app-card{{background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,.1);border:1px solid #e2e8f0}}
+              .tier{{font-size:.75rem;font-weight:600;color:#6366f1;text-transform:uppercase;margin-bottom:.5rem}}
+              h3{{font-size:1.1rem;font-weight:600;margin-bottom:.5rem}}
+              p{{font-size:.875rem;color:#64748b;margin-bottom:1rem;line-height:1.5}}
+              a{{display:inline-block;padding:.4rem .9rem;border-radius:6px;font-size:.8rem;font-weight:500;text-decoration:none;margin-right:.5rem}}
+              .demo-link{{background:#6366f1;color:#fff}}
+              .code-link{{background:#f1f5f9;color:#334155;border:1px solid #e2e8f0}}
+            </style>
+          </head>
+          <body>
+            <h1>App Ideas Showcase</h1>
+            <p class="subtitle">Building 82 apps from florinpop17/app-ideas &mdash; {len(apps)} complete</p>
+            <div class="grid">{rows}</div>
+          </body>
+          </html>'''
+
+          os.makedirs('gh-pages', exist_ok=True)
+          with open('gh-pages/index.html', 'w') as f:
+              f.write(html)
+          print(f"Generated index with {len(apps)} apps")
+          EOF
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: gh-pages
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+
+
