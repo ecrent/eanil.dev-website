@@ -2,6 +2,15 @@ catalogMode: prefer
 minimumReleaseAgeExclude:
   - '@iconify/json@2.2.478'
   - unplugin-vue-markdown@32.0.0
+  - shiki@4.2.0
+  - '@shikijs/core@4.2.0'
+  - '@shikijs/engine-javascript@4.2.0'
+  - '@shikijs/engine-oniguruma@4.2.0'
+  - '@shikijs/langs@4.2.0'
+  - '@shikijs/markdown-it@4.2.0'
+  - '@shikijs/primitive@4.2.0'
+  - '@shikijs/themes@4.2.0'
+  - '@shikijs/types@4.2.0'
 shellEmulator: true
 trustPolicy: no-downgrade
 
