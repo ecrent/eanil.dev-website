@@ -37,7 +37,7 @@ jobs:
           script: find /opt/eanil/website -mindepth 1 -delete
 
       - name: Sync files
-        uses: appleboy/scp-action@v0.1.7
+        uses: appleboy/scp-action@v1.0.0
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
