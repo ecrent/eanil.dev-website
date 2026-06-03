@@ -22,4 +22,4 @@ Find me on
   <a href="https://github.com/ecrent" target="_blank"><span op75 i-uil-github-alt /> GitHub</a>
 </p>
 
-Or mail me at <span font-mono>ecren.talasli<span i-carbon-at/>gmail.com</span>
+Or mail me at <span font-mono>hi<span i-carbon-at/>eanil.dev</span>
