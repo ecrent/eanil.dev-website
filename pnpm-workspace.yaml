@@ -9,7 +9,7 @@ packages: []
 
 catalogs:
   build:
-    '@shikijs/markdown-it': ^4.1.0
+    '@shikijs/markdown-it': ^4.2.0
     '@shikijs/transformers': ^4.1.0
     '@shikijs/twoslash': ^4.1.0
     '@unocss/preset-web-fonts': ^66.7.0
@@ -33,7 +33,7 @@ catalogs:
     vite-svg-loader: ^5.1.1
   dev:
     '@antfu/eslint-config': ^9.0.0
-    '@iconify/json': ^2.2.478
+    '@iconify/json': ^2.2.482
     '@octokit/core': ^7.0.6
     '@octokit/rest': ^22.0.1
     ansis: ^4.3.0
