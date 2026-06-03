@@ -5,21 +5,11 @@ description: About Anil Talasli
 art: random
 ---
 
-## About Me
+I'm Anil Talasli, based in Ankara, Turkey. I started my career as a petroleum engineer after graduating from Middle East Technical University, then spent 7 years in the oil & gas industry before making the move into software. I hold an MSc in Computer Science from IU International University of Applied Sciences in Berlin, Germany, and I've been freelancing for the past year, helping people bring their app and website ideas to life.
 
-I'm Anil Talasli — a full-stack developer transitioning from 7 years of engineering in the oil & gas industry. I'm currently completing an MSc in Computer Engineering at IU International University of Applied Sciences and looking for opportunities in backend and full-stack development, with particular interest in the defence industry and national technology initiatives.
+## What I work with
 
-My engineering background gives me a systematic, problem-solving approach to software: I'm comfortable working under constraints, optimizing for performance, and building things that need to be reliable.
-
-## Skills
-
-**Languages:** Java · TypeScript · Python · HTML5/CSS3
-
-**Frameworks:** Spring Boot · Spring Security · Spring Data JPA · Hibernate · JUnit · RESTful APIs · gRPC
-
-**Data & Messaging:** PostgreSQL · MS SQL Server · NoSQL · Elasticsearch · Kafka · Apache Spark
-
-**Cloud & DevOps:** AWS · Docker · Kubernetes · Git/GitHub · CI/CD · Grafana · Prometheus
+I mostly work in Java with the Spring ecosystem, building REST and gRPC APIs, handling auth with Spring Security, and writing tests with JUnit. On the data side I've worked with PostgreSQL, Elasticsearch, Kafka, and Spark, mostly in containerised environments on AWS. I also write TypeScript and Python when the project calls for it.
 
 ---
 

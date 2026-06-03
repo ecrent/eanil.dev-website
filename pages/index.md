@@ -1,16 +1,14 @@
 ---
-title: Anil Talasli
-description: Anil Talasli's Portfolio
+title: Anil the Dev
+description: Anil's Portfolio
 art: random
 ---
 
-Hey, I'm Anil — I build apps that are secure, scalable, and built to last.
+Hi, I'm Anil. I'm a backend developer who enjoys helping people bring their ideas to life. If you’re building an app or a service, you likely have a clear vision for what you want your users to experience. I build the reliable foundation that keeps everything running smoothly behind the scenes.
 
-Whether you need a web app your customers can rely on, a backend that handles growth without breaking, or a database that stays fast under pressure — I've got you covered. I take projects from idea to deployment and make sure they keep running smoothly.
+Check out my [projects](/projects) or read more [about me](/about).
 
-On the technical side: full-stack developer specialising in Java, Spring Boot, and cloud-native architectures (AWS, Docker, Kubernetes). I design REST and gRPC APIs, implement authentication and access control, and build data pipelines with Kafka, Spark, and Elasticsearch. Currently finishing an MSc in Computer Engineering.
-
-Check out my [projects](/projects) or read more [about me](/about). I also write [blog posts](/posts) about what I'm building and learning.
+I also write [blog posts](/posts) about what I'm building and learning.
 
 <div flex-auto />
 
