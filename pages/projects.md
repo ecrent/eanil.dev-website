@@ -28,3 +28,5 @@ projects:
       desc: 'Kafka + Spark + Elasticsearch pipeline for e-commerce analytics; fully containerized with Docker'
       icon: 'i-ri-database-2-line'
 ---
+
+<ListProjects :projects="frontmatter.projects" />

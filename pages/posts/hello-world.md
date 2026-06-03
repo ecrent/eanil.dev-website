@@ -2,6 +2,7 @@
 title: Hello World
 date: 2026-06-01
 duration: 2min
+art: random
 ---
 
 This is my first post.
