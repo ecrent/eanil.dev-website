@@ -6,6 +6,9 @@ art: dots
 ---
 
 <p><DecryptedText text="I'm Anil Talasli, based in Ankara, Turkey." :speed="50" :max-iterations="8" animate-on="view" :sequential="true" /></p>
+
+<p></p>
+
 I started my career as a petroleum engineer after graduating from Middle East Technical University, then spent 7 years in the oil & gas industry before making the move into software.
 
 I hold an MSc in Computer Science from IU International University of Applied Sciences in Berlin, Germany, and I've been freelancing for the past year, helping people bring their app and website ideas to life.
