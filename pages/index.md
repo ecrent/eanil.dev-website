@@ -1,10 +1,12 @@
 ---
 title: Anil the Dev
 description: Anil's Portfolio
-art: random
+art: dots
 ---
 
-Hi, I'm Anil. I'm a backend developer who enjoys helping people bring their ideas to life. If you’re building an app or a service, you likely have a clear vision for what you want your users to experience. I build the reliable foundation that keeps everything running smoothly behind the scenes.
+<SplitText text="Hello there!" tag="h2" class="mb-2" />
+
+I'm a developer who enjoys helping people bring their ideas to life. If you’re building an app or a service, you likely have a clear vision for what you want your users to experience. I build the reliable foundation that keeps everything running smoothly.
 
 Check out my [projects](/projects) or read more [about me](/about).
 

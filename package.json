@@ -21,6 +21,7 @@
     "d3-shape": "catalog:frontend",
     "dayjs": "catalog:frontend",
     "floating-vue": "catalog:frontend",
+    "gsap": "catalog:",
     "matter-attractors": "catalog:frontend",
     "matter-js": "catalog:frontend",
     "nprogress": "catalog:frontend",

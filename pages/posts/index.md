@@ -1,7 +1,7 @@
 ---
 title: Posts
 display: Posts
-art: random
+art: dots
 ---
 
 <ListPosts type="blog" />

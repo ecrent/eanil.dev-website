@@ -73,13 +73,6 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/use': RouteRecordInfo<
-      '/use',
-      '/use',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
   }
 
   /**
@@ -126,12 +119,6 @@ declare module 'vue-router/auto-routes' {
     'pages/projects.md': {
       routes:
         | '/projects'
-      views:
-        | never
-    }
-    'pages/use.md': {
-      routes:
-        | '/use'
       views:
         | never
     }

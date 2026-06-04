@@ -16,6 +16,8 @@ trustPolicy: no-downgrade
 
 packages: []
 
+catalog:
+  gsap: ^3.15.0
 catalogs:
   build:
     '@shikijs/markdown-it': ^4.2.0
