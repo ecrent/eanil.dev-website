@@ -5,19 +5,21 @@ duration: a little long
 art: dots
 ---
 
-This post is for people who wants to learn how to use REST API's in Spring Boot. You must have basic knowledge in REST APIs, Java, Spring Framework and Postgres to follow the post. The reader will have an understanding how REST APIs are used in Spring Boot project.
+This post is for anyone who wants to learn how to build and use REST APIs in Spring Boot. To follow along, you should have a basic understanding of REST APIs, Java, the Spring Framework, and PostgreSQL. By the end of this guide, you will have a solid grasp of how REST APIs are implemented in a Spring Boot project.
 
-I think before writing this blog post I need to justify both writing about the building REST APIs and learning the fundementals in the era of AI. Today, June/2026, almost anyone can one shot this api by using any of the llm's. So why bother?
+Before diving in, I feel the need to justify writing about building REST APIs—and learning the fundamentals in general in the era of AI. Today, in June 2026, almost anyone can one-shot this API using any of the major LLMs. So, why bother?
 
-AI's impact has already transformed how things are done. Repetative tasks can be done by AI and many of the domain specific knowledge can be accessed by anyone therefore losing its edge over the ones who doesnt have that knowledge. Some jobs can be done by fewer people. The increase in AI's capabilities are high, the difference between three years ago and now is tramendous. Current market conditions are not helping the developers either.
+There is no denying that AI has already transformed how we work. Repetitive tasks can now be automated, and domain-specific knowledge is accessible to anyone. Consequently, simply holding information is no longer the competitive edge it once was, and certain jobs can now be done by fewer people. The rapid increase in AI capabilities is undeniable; the difference between three years ago and today is tremendous. Add in current market conditions, and it is undoubtedly a tough time for developers.
 
-With that being said, I am on little brighter side of the ai discussion, my reasoning stems from the fact that AI can not do math. If one can't do Math, it means that it can not reason, without the reasoning you can not do engineering. To me, it will continue being an usefull tool. And lastly, developers are the best customers of the AI companies right now, do they want to lose their best customers ? At least for now, no, and for the future, who knows?
+With that being said, I take a more optimistic stance on the AI discussion. My reasoning stems from the fact that AI, at its core, cannot do math. If it can't do math, it cannot truly reason and without reasoning, you cannot do engineering. To me, AI will remain a highly useful tool rather than a replacement. Furthermore, developers are currently the best customers for AI companies. Do they really want to eliminate their primary user base? At least for now, the answer is no. As for the future, who knows?
 
-I think it is better to focus on the advantages it gives to us. To use the advantages, all starts with the fundemantals right?
+I believe it is better to focus on the advantages these tools offer us. And to properly leverage those advantages, it all starts with mastering the fundamentals, right?
 
-I am writing this post primarly as notes to myself. For you my fellow reader, feel free stick around, and try it yoruself.
+I am writing this post primarily as notes for myself. But to my fellow readers, feel free to stick around and try it out for yourself.
 
-This api is about registering tenants, and accesing their ledgers. For simplicity, I build two endpoints from scratch: `POST /api/v1/tenants` and `GET /api/v1/ledger/{tenantId}/entries/{entryId}`.
+This API focuses on registering tenants and accessing their ledgers. For simplicity, I will build two endpoints from scratch:
+POST /api/v1/tenants
+GET /api/v1/ledger/{tenantId}/entries/{entryId}
 
 ---
 
@@ -54,9 +56,9 @@ Controller      → returns DTO, serialized to JSON
 HTTP Response (JSON)
 ```
 
-The Controller is the entry point — it receives the HTTP request and delegates to the Service. The Service handles the business logic and calls the Repository when it needs data. The Repository talks to the database.
+The Controller is the entry point, it receives the HTTP request and delegates to the Service. The Service handles the business logic and calls the Repository when it needs data. The Repository talks to the database.
 
-DTOs (Data Transfer Objects) are custom Java objects that carry data in and out of the API. They're different from Domain objects — the Mapper translates between the two. This separation means you control exactly what gets exposed to the outside world, regardless of what's in your database.
+DTOs (Data Transfer Objects) are custom Java objects that carry data in and out of the API. They're different from Domain objects, the Mapper translates between the two. This separation means you control exactly what gets exposed to the outside world, regardless of what's in your database.
 
 ---
 
@@ -76,7 +78,7 @@ docker run -d \
   -e POSTGRES_USER=myuser \
   -e POSTGRES_PASSWORD=mypassword \
   -e POSTGRES_DB=learning_api \
-  -p 5432:5432 \
+  -p 127.0.0.1:5432:5432 \
   postgres:16-alpine
 ```
 
@@ -89,10 +91,10 @@ What each flag does:
 | `-e POSTGRES_USER`         | The database user Spring will connect as                                                                |
 | `-e POSTGRES_PASSWORD`     | The password for that user                                                                              |
 | `-e POSTGRES_DB`           | Creates this database automatically on first start                                                      |
-| `-p 127.0.0.1:5432`        | Forward port 5432 on your machine into the container — without this, nothing outside Docker can connect |
+| `-p 127.0.0.1:5432:5432`   | Forward port 5432 on your machine into the container — without this, nothing outside Docker can connect |
 | `postgres:16-alpine`       | The image to use. `alpine` is a minimal Linux base — smaller image, same PostgreSQL                     |
 
-Be careful with port forwarding, we dont want to expose the ports to outworld acccess by doing 5432:5432. 127.0.0.1 means localhost. 127.0.0.1:5432, so the docker port can only be accessed from the localhost.
+Be careful with port forwarding, we dont want to expose the ports to outworld acccess by doing 5432:5432. 127.0.0.1 means localhost. 127.0.0.1:5432:5432, so the docker port can only be accessed from the localhost.
 
 Verify it's running:
 
