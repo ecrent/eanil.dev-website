@@ -59,6 +59,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/blog-post-learn-api': RouteRecordInfo<
+      '/posts/blog-post-learn-api',
+      '/posts/blog-post-learn-api',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/hello-world': RouteRecordInfo<
       '/posts/hello-world',
       '/posts/hello-world',
@@ -107,6 +114,12 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/index.md': {
       routes:
         | '/posts/'
+      views:
+        | never
+    }
+    'pages/posts/blog-post-learn-api.md': {
+      routes:
+        | '/posts/blog-post-learn-api'
       views:
         | never
     }

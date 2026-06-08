@@ -1,11 +1,15 @@
+import type { FeedOptions, Item } from 'feed'
 import { Buffer } from 'node:buffer'
 import { basename, dirname, resolve } from 'node:path'
 import MarkdownItShiki from '@shikijs/markdown-it'
 import { transformerNotationDiff, transformerNotationHighlight, transformerNotationWordHighlight } from '@shikijs/transformers'
 import { rendererRich, transformerTwoslash } from '@shikijs/twoslash'
 import Vue from '@vitejs/plugin-vue'
+import fg from 'fast-glob'
+import { Feed } from 'feed'
 import fs from 'fs-extra'
 import matter from 'gray-matter'
+import MarkdownIt from 'markdown-it'
 import anchor from 'markdown-it-anchor'
 import GitHubAlerts from 'markdown-it-github-alerts'
 import LinkAttributes from 'markdown-it-link-attributes'
@@ -27,6 +31,56 @@ import VueRouter from 'vue-router/vite'
 import { slugify } from './scripts/slugify'
 
 const promises: Promise<any>[] = []
+
+const DOMAIN = 'https://eanil.dev'
+const FEED_AUTHOR = { name: 'Anil Talasli', email: 'hi@eanil.dev', link: DOMAIN }
+const markdownRenderer = MarkdownIt({ html: true, breaks: true, linkify: true })
+
+async function generateFeed() {
+  const files = await fg('pages/posts/*.md')
+  const feedOptions: FeedOptions = {
+    title: 'Anil Talasli',
+    description: 'Anil Talasli\'s Blog',
+    id: `${DOMAIN}/`,
+    link: `${DOMAIN}/`,
+    copyright: 'CC BY-NC-SA 4.0 2024 © Anil Talasli',
+    author: FEED_AUTHOR,
+    image: `${DOMAIN}/favicon.png`,
+    favicon: `${DOMAIN}/favicon.png`,
+    feedLinks: {
+      json: `${DOMAIN}/feed.json`,
+      atom: `${DOMAIN}/feed.atom`,
+      rss: `${DOMAIN}/feed.xml`,
+    },
+  }
+
+  const posts = (await Promise.all(
+    files
+      .filter(i => !i.includes('index'))
+      .map(async (i) => {
+        const raw = await fs.readFile(i, 'utf-8')
+        const { data, content } = matter(raw)
+        if (data.lang && data.lang !== 'en')
+          return
+        const html = markdownRenderer.render(content).replace('src="/', `src="${DOMAIN}/`)
+        if (data.image?.startsWith('/'))
+          data.image = DOMAIN + data.image
+        return {
+          ...data,
+          date: new Date(data.date),
+          content: html,
+          author: [FEED_AUTHOR],
+          link: DOMAIN + i.replace(/^pages(.+)\.md$/, '$1'),
+        }
+      }),
+  )).filter(Boolean) as Item[]
+
+  posts.sort((a, b) => +new Date(b.date) - +new Date(a.date))
+
+  const feed = new Feed(feedOptions)
+  posts.forEach(item => feed.addItem(item))
+  return feed
+}
 
 export default defineConfig({
   resolve: {
@@ -217,6 +271,35 @@ export default defineConfig({
     }),
 
     Exclude(),
+
+    {
+      name: 'rss-feed',
+      configureServer(server) {
+        const contentTypes: Record<string, string> = {
+          '/feed.xml': 'application/rss+xml; charset=utf-8',
+          '/feed.atom': 'application/atom+xml; charset=utf-8',
+          '/feed.json': 'application/json; charset=utf-8',
+        }
+        server.middlewares.use(async (req, res, next) => {
+          if (req.url && contentTypes[req.url]) {
+            try {
+              const feed = await generateFeed()
+              res.setHeader('Content-Type', contentTypes[req.url])
+              const body = req.url === '/feed.xml'
+                ? feed.rss2()
+                : req.url === '/feed.atom' ? feed.atom1() : feed.json1()
+              res.end(body)
+            }
+            catch (e) {
+              next(e)
+            }
+          }
+          else {
+            next()
+          }
+        })
+      },
+    },
 
     {
       name: 'await',

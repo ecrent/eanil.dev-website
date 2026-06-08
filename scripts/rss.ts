@@ -9,7 +9,7 @@ import MarkdownIt from 'markdown-it'
 const DOMAIN = 'https://eanil.dev'
 const AUTHOR = {
   name: 'Anil Talasli',
-  email: 'ecren.talasli@gmail.com',
+  email: 'hi@eanil.dev',
   link: DOMAIN,
 }
 const markdown = MarkdownIt({
@@ -44,7 +44,7 @@ async function buildBlogRSS() {
           const raw = await fs.readFile(i, 'utf-8')
           const { data, content } = matter(raw)
 
-          if (data.lang !== 'en')
+          if (data.lang && data.lang !== 'en')
             return
 
           const html = markdown.render(content)

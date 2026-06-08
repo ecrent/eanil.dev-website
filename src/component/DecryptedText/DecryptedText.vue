@@ -2,7 +2,7 @@
 import { nextTick, onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vue'
 
 interface DecryptedTextProps {
-  text: string
+  text?: string
   speed?: number
   maxIterations?: number
   sequential?: boolean

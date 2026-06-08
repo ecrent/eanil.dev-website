@@ -1,7 +1,7 @@
 ---
 title: Hello World
 date: 2026-06-01
-duration: 2min
+duration: 2 seconds
 art: dots
 ---
 
