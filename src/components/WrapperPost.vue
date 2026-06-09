@@ -1,4 +1,5 @@
 <script setup lang='ts'>
+import { Giscus } from '@giscus/vue'
 import { formatDate } from '~/logics'
 
 const { frontmatter } = defineProps({
@@ -140,5 +141,22 @@ const ArtComponent = computed(() => {
       class="font-mono op50 hover:op75"
       v-text="'cd ..'"
     />
+  </div>
+  <div v-if="route.path !== '/'" class="prose m-auto mt-8 mb-16 slide-enter animate-delay-500 print:hidden">
+    <ClientOnly>
+      <Giscus
+        repo="ecrent/eanil.dev-website"
+        repo-id="R_kgDOStYUMw"
+        category="General"
+        category-id="DIC_kwDOStYUM84C-yb1"
+        mapping="pathname"
+        strict="0"
+        reactions-enabled="1"
+        emit-metadata="0"
+        input-position="top"
+        theme="preferred_color_scheme"
+        lang="en"
+      />
+    </ClientOnly>
   </div>
 </template>
