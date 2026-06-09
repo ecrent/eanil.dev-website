@@ -4,7 +4,7 @@ display: About
 description: About Anil Talasli
 ---
 
-<p style="min-height: 2em"><DecryptedText text="I'm Anil Talasli, based in Ankara, Turkey." :speed="50" :max-iterations="8" animate-on="view" :sequential="true" /></p>
+<p style="min-height: 2.5em"><DecryptedText text="I'm Anil Talasli, based in Ankara, Turkey." :speed="50" :max-iterations="8" animate-on="view" :sequential="true" /></p>
 
 <p></p>
 
