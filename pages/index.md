@@ -10,7 +10,7 @@ I'm a developer who enjoys helping people bring their ideas to life. If you’re
 
 Check out my [projects](/projects) or read more [about me](/about).
 
-I also write [blog posts](/posts) about what I'm building and learning.
+I also write [blog posts](/posts) about what I'm building and learning, you are free to comment and join the discussion.
 
 <div flex-auto />
 

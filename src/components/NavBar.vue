@@ -83,7 +83,7 @@ const { y: scroll } = useWindowScroll()
   text-decoration: none;
   color: inherit;
   transition: opacity 0.2s ease;
-  opacity: 0.6;
+  opacity: 0.75;
   outline: none;
 }
 

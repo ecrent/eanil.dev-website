@@ -61,7 +61,7 @@ function getRandomSpeed() {
 
 function getCurrentTextColor() {
   if (!props.textColors.length)
-    return '#ffffff'
+    return 'currentColor'
   return props.textColors[currentTextIndex.value % props.textColors.length]
 }
 
