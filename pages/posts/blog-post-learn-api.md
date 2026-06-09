@@ -298,7 +298,9 @@ CREATE TABLE ledger_entries (
 
 ---
 
-## The Domain Layer — Tenant.java
+## Building the POST Endpoint — Tenant
+
+### The Domain Layer — Tenant.java
 
 **File:** `src/main/java/com/learn/learning_api/domain/Tenant.java`
 
@@ -333,7 +335,7 @@ public class Tenant {
 }
 ```
 
-### What the annotations mean
+#### What the annotations mean
 
 **Class-level annotations:**
 
@@ -367,7 +369,7 @@ Tenant (domain)       ← @Column — map to the database
 PostgreSQL
 ```
 
-### Enabling JPA Auditing
+#### Enabling JPA Auditing
 
 `@CreatedDate` and `@LastModifiedDate` require one more thing — add `@EnableJpaAuditing` to the main application class:
 
@@ -385,7 +387,7 @@ Without this, Spring never activates the auditing mechanism and those fields sta
 
 ---
 
-## The Repository Layer
+### The Repository Layer
 
 **File:** `src/main/java/com/learn/learning_api/repository/TenantRepository.java`
 
@@ -407,7 +409,7 @@ SELECT COUNT(*) > 0 FROM tenants WHERE email = ?
 
 The naming convention: start with `existsBy`, `findBy`, `deleteBy`, or `countBy` — then chain field names from your entity. No body needed.
 
-### The full database stack explained
+#### The full database stack explained
 
 ```
 TenantRepository       ← your interface — you work here
@@ -430,7 +432,7 @@ PostgreSQL             ← runs the SQL, returns rows
 
 ---
 
-## The DTO Layer
+### The DTO Layer
 
 DTOs (Data Transfer Objects) carry data in and out of your API. They're completely separate from the domain layer — intentionally.
 
@@ -455,11 +457,11 @@ public record TenantResponse(
 ) {}
 ```
 
-### Why `record` instead of `class`?
+#### Why `record` instead of `class`?
 
 A `record` is a Java type designed for objects that just hold data. A regular class needs a constructor, getters, `equals()`, `hashCode()`, `toString()` — 30+ lines of boilerplate. A `record` gives all of that for free from a single line of field declarations.
 
-### Why keep DTOs separate from the domain?
+#### Why keep DTOs separate from the domain?
 
 The domain mirrors the database. The DTO is your contract with the outside world. They evolve independently:
 
@@ -475,7 +477,7 @@ Tenant (from DB)      →  [Mapper]  →  TenantResponse  →  sent to client
 
 ---
 
-## The Mapper Layer
+### The Mapper Layer
 
 The Mapper is a plain Java class — no special Spring magic. Its only job is to translate between the domain and DTOs.
 
@@ -514,7 +516,7 @@ The mapping is explicit and manual — you tell Spring field by field what conne
 
 ---
 
-## The Service Layer
+### The Service Layer
 
 The Service contains business logic — the rules of your application. It sits between the Controller and the Repository.
 
@@ -562,7 +564,7 @@ public class TenantService {
 
 ---
 
-## The Controller Layer
+### The Controller Layer
 
 The Controller receives HTTP requests and returns HTTP responses. It knows nothing about the database — it just calls the Service.
 
@@ -600,7 +602,7 @@ The return type is `TenantResponse` — what you send _back_. The `@RequestBody 
 
 Spring uses a library called **Jackson** (included automatically) to serialize the `TenantResponse` record into JSON. You never call it directly — `@RestController` handles it.
 
-### The complete flow for POST /api/v1/tenants
+#### The complete flow for POST /api/v1/tenants
 
 ```
 Client sends JSON
@@ -1065,7 +1067,9 @@ The app is ready. If any step fails, Spring Boot shuts down immediately and prin
 
 ---
 
-## Testing the Endpoints with curl
+## Testing
+
+### Testing with curl
 
 Once the app is running, you can hit the endpoints from your terminal with `curl`.
 
@@ -1162,7 +1166,7 @@ Replace `{tenantId}` and `{entryId}` with real UUIDs from your database. Returns
 
 ---
 
-## Testing
+### Unit and Integration Tests
 
 There are three types of tests in a Spring Boot API:
 
