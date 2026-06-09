@@ -79,7 +79,20 @@ onMounted(() => {
     :lang="frontmatter.lang"
     :class="[frontmatter.wrapperClass]"
   >
-    <h1 class="mb-0 slide-enter-50">
+    <ClientOnly v-if="route.path !== '/about'">
+      <SplitText
+        :text="frontmatter.display ?? frontmatter.title"
+        tag="h1"
+        class="mb-0"
+        split-type="words"
+        text-align="left"
+        :delay="60"
+        :duration="0.8"
+        ease="power3.out"
+        root-margin="0px"
+      />
+    </ClientOnly>
+    <h1 v-else class="mb-0 slide-enter-50">
       {{ frontmatter.display ?? frontmatter.title }}
     </h1>
     <p
