@@ -3,7 +3,6 @@ title: Projects - Anil Talasli
 display: Projects
 description: Projects I have built
 wrapperClass: 'text-center'
-art: dots
 projects:
   Backend & Cloud:
     - name: 'JWT Decoupling Strategy'

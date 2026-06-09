@@ -1,10 +1,10 @@
 ---
 title: Anil the Dev
 description: Anil's Portfolio
-art: dots
+display: false
 ---
 
-<SplitText text="Hello there!" tag="h2" class="mb-2" />
+<h1 class="mb-2">Anil <TextType :text="['the Dev', 'the Freelancer', 'your best frie']" :pause-durations="[2000, 2000, 300]" as="span" :show-cursor="true" cursor-character="_" :typing-speed="60" :deleting-speed="40" :pause-duration="2000" /></h1>
 
 I'm a developer who enjoys helping people bring their ideas to life. If you’re building an app or a service, you likely have a clear vision for what you want your users to experience. I build the reliable foundation that keeps everything running smoothly.
 

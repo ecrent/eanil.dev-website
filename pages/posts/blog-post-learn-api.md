@@ -2,7 +2,6 @@
 title: Building a REST API with Java, Spring Boot, and PostgreSQL
 date: 2026-06-08
 duration: a little long
-art: dots
 ---
 
 This post is for anyone who wants to learn how to build and use REST APIs in Spring Boot. To follow along, you should have a basic understanding of REST APIs, Java, the Spring Framework, and PostgreSQL. By the end of this guide, you will have a solid grasp of how REST APIs are implemented in a Spring Boot project.

@@ -2,7 +2,6 @@
 title: About - Anil Talasli
 display: About
 description: About Anil Talasli
-art: dots
 ---
 
 <p style="min-height: 2em"><DecryptedText text="I'm Anil Talasli, based in Ankara, Turkey." :speed="50" :max-iterations="8" animate-on="view" :sequential="true" /></p>
