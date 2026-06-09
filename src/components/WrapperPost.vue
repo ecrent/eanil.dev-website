@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { Giscus } from '@giscus/vue'
+import Giscus from '@giscus/vue'
 import { formatDate } from '~/logics'
 
 const { frontmatter } = defineProps({
@@ -142,7 +142,7 @@ const ArtComponent = computed(() => {
       v-text="'cd ..'"
     />
   </div>
-  <div v-if="route.path !== '/'" class="prose m-auto mt-8 mb-16 slide-enter animate-delay-500 print:hidden">
+  <div v-if="/^\/posts\/.+/.test(route.path)" class="prose m-auto mt-8 mb-16 slide-enter animate-delay-500 print:hidden">
     <ClientOnly>
       <Giscus
         repo="ecrent/eanil.dev-website"
