@@ -270,7 +270,7 @@ export default defineConfig({
         if (jsonLd.length) {
           head.script = head.script || []
           jsonLd.forEach(schema =>
-            (head.script as any[]).push({ type: 'application/ld+json', children: JSON.stringify(schema) }),
+            (head.script as any[]).push({ type: 'application/ld+json', innerHTML: JSON.stringify(schema) }),
           )
         }
 
