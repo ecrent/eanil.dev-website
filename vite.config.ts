@@ -234,6 +234,46 @@ export default defineConfig({
           frontmatter.image = `https://eanil.dev/${path}`
         })()
         const head = defaults(frontmatter, options)
+
+        // JSON-LD structured data
+        const jsonLd: Record<string, any>[] = []
+
+        if (id.endsWith('pages/index.md')) {
+          jsonLd.push({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            'name': 'Anil Talasli',
+            'url': 'https://eanil.dev',
+            'email': 'hi@eanil.dev',
+            'jobTitle': 'Software Developer',
+            'sameAs': ['https://github.com/ecrent'],
+          })
+        }
+        else if (id.includes('pages/posts/') && !id.includes('index')) {
+          const route = id.replace(/^.*pages(.+)\.md$/, '$1')
+          jsonLd.push({
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            'headline': frontmatter.title,
+            'datePublished': frontmatter.date,
+            'description': frontmatter.description || '',
+            'image': frontmatter.image || 'https://eanil.dev/eanil-icon-192.png',
+            'url': `https://eanil.dev${route}`,
+            'author': {
+              '@type': 'Person',
+              'name': 'Anil Talasli',
+              'url': 'https://eanil.dev',
+            },
+          })
+        }
+
+        if (jsonLd.length) {
+          head.script = head.script || []
+          jsonLd.forEach(schema =>
+            (head.script as any[]).push({ type: 'application/ld+json', children: JSON.stringify(schema) }),
+          )
+        }
+
         return { head, frontmatter }
       },
     }),
