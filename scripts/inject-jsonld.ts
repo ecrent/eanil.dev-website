@@ -4,12 +4,23 @@ import matter from 'gray-matter'
 
 const DOMAIN = 'https://eanil.dev'
 
-function injectScript(html: string, json: object): string {
-  const tag = `<script type="application/ld+json">${JSON.stringify(json)}</script>`
+function injectTag(html: string, tag: string): string {
   return html.replace('</head>', `${tag}\n</head>`)
 }
 
 async function run() {
+  // Inject canonical URLs into all HTML files in dist
+  const allHtmlFiles = await fg('./dist/**/index.html')
+  for (const file of allHtmlFiles) {
+    const urlPath = file
+      .replace('./dist', '')
+      .replace(/\/index\.html$/, '') || '/'
+    const canonical = `<link rel="canonical" href="${DOMAIN}${urlPath}" />`
+    const html = await fs.readFile(file, 'utf-8')
+    await fs.writeFile(file, injectTag(html, canonical), 'utf-8')
+  }
+  console.log(`Injected canonical URLs into ${allHtmlFiles.length} pages`)
+
   // Person schema on homepage
   const indexHtml = await fs.readFile('./dist/index.html', 'utf-8')
   const personSchema = {
@@ -21,7 +32,8 @@ async function run() {
     'jobTitle': 'Software Developer',
     'sameAs': [`${DOMAIN}/about`, 'https://github.com/ecrent'],
   }
-  await fs.writeFile('./dist/index.html', injectScript(indexHtml, personSchema), 'utf-8')
+  const jsonLdTag = `<script type="application/ld+json">${JSON.stringify(personSchema)}</script>`
+  await fs.writeFile('./dist/index.html', injectTag(indexHtml, jsonLdTag), 'utf-8')
   console.log('Injected Person schema into index.html')
 
   // BlogPosting schema on each post
@@ -50,8 +62,9 @@ async function run() {
       },
     }
 
-    const html = await fs.readFile(outPath, 'utf-8')
-    await fs.writeFile(outPath, injectScript(html, blogSchema), 'utf-8')
+    const postHtml = await fs.readFile(outPath, 'utf-8')
+    const blogTag = `<script type="application/ld+json">${JSON.stringify(blogSchema)}</script>`
+    await fs.writeFile(outPath, injectTag(postHtml, blogTag), 'utf-8')
     console.log(`Injected BlogPosting schema into ${outPath}`)
   }
 }
