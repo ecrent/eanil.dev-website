@@ -18,5 +18,3 @@ I mostly work in Java with the Spring ecosystem, building REST and WebSockets AP
 with Vue.
 
 ---
-
-Feel free to reach out at <span font-mono>hi<span i-carbon-at/>eanil.dev</span> or find me on <a href="https://github.com/ecrent" target="_blank">GitHub</a>.
