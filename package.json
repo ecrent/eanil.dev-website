@@ -3,7 +3,7 @@
   "private": true,
   "packageManager": "pnpm@11.2.2",
   "scripts": {
-    "build": "npm run static && cross-env NODE_ENV=production vite-ssg build && tsx ./scripts/copy-fonts.ts && tsx ./scripts/rss.ts && tsx ./scripts/sitemap.ts",
+    "build": "npm run static && cross-env NODE_ENV=production vite-ssg build && tsx ./scripts/copy-fonts.ts && tsx ./scripts/rss.ts && tsx ./scripts/sitemap.ts && tsx ./scripts/inject-jsonld.ts",
     "dev": "vite --port 3333 --open",
     "preview": "vite preview",
     "static": "rimraf temp && degit antfu/static temp --force && tsx scripts/copy-sponsors",
