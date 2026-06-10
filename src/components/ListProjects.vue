@@ -8,7 +8,7 @@ function slug(name: string) {
 
 <template>
   <div class="max-w-300 mx-auto">
-    <p text-center mt--6 mb5 op50 text-lg italic>
+    <p text-center mt--6 mb5 text-lg italic>
       Projects I have built.
     </p>
     <div class="prose pb5 mx-auto mt10 text-center">
