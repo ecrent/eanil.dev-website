@@ -8,11 +8,11 @@ function slug(name: string) {
 
 <template>
   <div class="max-w-300 mx-auto">
-    <p text-center mt--6 mb5 text-lg italic>
+    <p mt--6 mb5 text-lg>
       Projects I have built.
     </p>
-    <div class="prose pb5 mx-auto mt10 text-center">
-      <div flex="~ gap-2 justify-center">
+    <div class="prose pb5 mx-auto mt10">
+      <div flex="~ gap-2">
         <a
           href="https://github.com/ecrent"
           target="_blank"
@@ -42,7 +42,7 @@ function slug(name: string) {
         <span text-5em color-transparent absolute left--1rem top-0rem font-bold leading-1em text-stroke-1.5 text-stroke-hex-aaa op35 dark:op20>{{ key }}</span>
       </div>
       <div
-        class="project-grid py-2 max-w-500 w-max mx-auto"
+        class="project-grid py-2 max-w-500 w-max"
         grid="~ cols-1 md:cols-2 gap-4 lg:cols-3"
       >
         <a
