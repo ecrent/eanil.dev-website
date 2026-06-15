@@ -2,6 +2,7 @@
 title: Hello World
 date: 2026-06-01
 duration: 2 seconds
+description: My first post — welcome to the blog.
 ---
 
 This is my first post.
