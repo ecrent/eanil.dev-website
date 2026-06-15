@@ -47,13 +47,18 @@ async function run() {
     if (!await fs.pathExists(outPath))
       continue
 
+    const route = slug.split('/').pop()!
+    const ogImage = data.image?.startsWith('/')
+      ? `${DOMAIN}${data.image}`
+      : data.image || `${DOMAIN}/og/${route}.png`
+
     const blogSchema = {
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
       'headline': data.title,
       'datePublished': data.date,
       'description': data.description || '',
-      'image': data.image || `${DOMAIN}/eanil-icon-192.png`,
+      'image': ogImage,
       'url': `${DOMAIN}${slug}`,
       'author': {
         '@type': 'Person',
