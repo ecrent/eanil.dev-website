@@ -343,7 +343,7 @@ async function generateOg(title: string, output: string) {
   console.log(`Generating ${output}`)
   try {
     await sharp(Buffer.from(svg))
-      .resize(1200 * 1.1, 630 * 1.1)
+      .resize(1200, 630)
       .png()
       .toFile(output)
   }
