@@ -21,9 +21,9 @@ catalog:
   gsap: ^3.15.0
 catalogs:
   build:
-    '@shikijs/markdown-it': ^4.2.0
-    '@shikijs/transformers': ^4.1.0
-    '@shikijs/twoslash': ^4.1.0
+    '@shikijs/markdown-it': ^4.3.1
+    '@shikijs/transformers': ^4.3.1
+    '@shikijs/twoslash': ^4.3.1
     '@unocss/preset-web-fonts': ^66.7.0
     '@vitejs/plugin-vue': ^6.0.7
     gray-matter: ^4.0.3
@@ -44,8 +44,8 @@ catalogs:
     vite-ssg: ^28.3.0
     vite-svg-loader: ^5.1.1
   dev:
-    '@antfu/eslint-config': ^9.0.0
-    '@iconify/json': ^2.2.482
+    '@antfu/eslint-config': ^9.2.0
+    '@iconify/json': ^2.2.506
     '@octokit/core': ^7.0.6
     '@octokit/rest': ^22.0.1
     ansis: ^4.3.0
@@ -98,7 +98,7 @@ catalogs:
     '@types/fs-extra': ^11.0.4
     '@types/markdown-it': ^14.1.2
     '@types/markdown-it-link-attributes': ^3.0.5
-    '@types/node': ^25.9.1
+    '@types/node': ^26.1.2
     '@types/nprogress': ^0.2.3
     '@types/prompts': ^2.4.9
 
